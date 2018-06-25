@@ -18,12 +18,14 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed * dt;
+    // Bugs cross the screen
     if (this.x >= 500) {
         this.y = yPos[[Math.floor(Math.random() * yPos.length)]];
         this.x = -100;
         this.speed = speeds[[Math.floor(Math.random() * speeds.length)]];
     }
-    if(this.y === player.y && (this.x >= player.x - 50 && this.x <= player.x + 50) ) {
+    // Reset the game if the player and the bug meet
+    if(this.y === player.y && (this.x >= player.x - 60 && this.x <= player.x + 60) ) {
         player.y = 380;
     }
 };
